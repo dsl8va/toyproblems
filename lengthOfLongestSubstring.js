@@ -48,6 +48,7 @@ Output: 0
 
 var lengthOfLongestSubstring = function(s) {
   if (s === '') return 0;
+  if (s.length === 1) return 1;
 
   let length = 0;
   let substring = '';
@@ -68,5 +69,8 @@ var lengthOfLongestSubstring = function(s) {
   return length;
 
 };
+Runtime: 508 ms, faster than 11.23% of JavaScript online submissions for Longest Substring Without Repeating Characters.
+Memory Usage: 44.4 MB, less than 51.68% of JavaScript online submissions for Longest Substring Without Repeating Characters.
+
 debugger;
 lengthOfLongestSubstring(' ')
