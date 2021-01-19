@@ -12,11 +12,11 @@ function maxSubarraySum(arr, num) {
   }
   tempSum = maxSum;
 
-  for (let j = num; j < (arr.length - num + 1); j++) {
+  for (let j = num; j < arr.length j++) {
     tempSum = tempSum - arr[j-num] + arr[j];
     maxSum = Math.max(tempSum, maxSum)
   }
   return maxSum;
 }
 
-console.log(maxSubarraySum([1,2,5,2,8,1,5], 2))
+console.log(maxSubarraySum([100, 200, 300, 400], 2))
