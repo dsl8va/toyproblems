@@ -121,4 +121,37 @@ function quickSort(arr, left=0, right=arr.length) {
   return arr;
 }
 
-console.log(quickSort([5,2,6,1,4,7]))
+// console.log(quickSort([5,2,7,1,4,6]))
+
+function getDigit(num, i) {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+}
+
+function digitCount(num) {
+  if (num === 0) return 1;
+  return Math.floor(Math.log10(num)) + 1;
+}
+
+function mostDigits(arr) {
+  let most = 0;
+  arr.forEach(num => {
+    most = Math.max(most, digitCount(num))
+  })
+  return most;
+}
+
+function radixSort(arr) {
+  let max = mostDigits(arr);
+  for (let i = 0; i < max; i++) {
+    let buckets = Array.from({length: 10}, () => []);
+    for (let j = 0; j < arr.length; j++) {
+      let num = arr[j];
+      let digit = getDigit(num, i);
+      buckets[digit].push(num);
+    }
+    arr = [].concat(...buckets);
+  }
+  return arr;
+}
+
+console.log(radixSort([54, 342, 53, 1, 3456, 853, 12, 97]))
