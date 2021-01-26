@@ -24,15 +24,6 @@ class LinkedList {
   }
 
   pop() {
-    // if (!this.head) return undefined;
-    // let runner = this.head;
-    // while (runner.next.next !== null) {
-    //   runner = runner.next;
-    // }
-    // runner.next = null;
-    // this.tail = runner;
-    // this.length--;
-    // return runner;
 
     if (!this.head) return undefined;
     let current = this.head;
@@ -51,6 +42,28 @@ class LinkedList {
     return current;
   }
 
+  shift() {
+    if (!this.head) return undefined;
+    let currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return currentHead;
+  }
+
+  unshift(val) {
+    let newHead = new Node(val);
+    if (!this.head) {
+      this.head = this.tail = newHead;
+    } else {
+      newHead.next = this.head;
+      this.head = newHead;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 let list = new LinkedList()
@@ -61,3 +74,4 @@ list.pop()
 console.log('list2', list)
 list.pop()
 console.log('list2', list)
+
